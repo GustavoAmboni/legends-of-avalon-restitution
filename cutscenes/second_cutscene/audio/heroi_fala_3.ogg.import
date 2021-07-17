@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/heroi_fala_3.ogg-c3e29dd541a0d903675453919d97a190.oggstr"
+
+[deps]
+
+source_file="res://cutscenes/second_cutscene/audio/heroi_fala_3.ogg"
+dest_files=[ "res://.import/heroi_fala_3.ogg-c3e29dd541a0d903675453919d97a190.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

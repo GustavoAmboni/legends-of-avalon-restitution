@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/birds_sing.ogg-dc49dc4c26976b70b96849e0d1b05a43.oggstr"
+
+[deps]
+
+source_file="res://sound_effects/birds_sing.ogg"
+dest_files=[ "res://.import/birds_sing.ogg-dc49dc4c26976b70b96849e0d1b05a43.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/leah_fala_1.ogg-356a4a1eba273ae2462ecb0490f956c1.oggstr"
+
+[deps]
+
+source_file="res://cutscenes/first_cutscene/audio/leah_fala_1.ogg"
+dest_files=[ "res://.import/leah_fala_1.ogg-356a4a1eba273ae2462ecb0490f956c1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

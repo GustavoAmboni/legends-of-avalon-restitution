@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hooding-crow.ogg-6ae9f5d3ef2f7aadd4c50897a88c4e97.oggstr"
+
+[deps]
+
+source_file="res://commom_audio/enviroment/hooding-crow.ogg"
+dest_files=[ "res://.import/hooding-crow.ogg-6ae9f5d3ef2f7aadd4c50897a88c4e97.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

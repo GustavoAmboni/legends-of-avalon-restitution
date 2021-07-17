@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/yuri_fala_2.ogg-ac3aede7a44bb99fb25e210d9b49328d.oggstr"
+
+[deps]
+
+source_file="res://cutscenes/second_cutscene/audio/yuri_fala_2.ogg"
+dest_files=[ "res://.import/yuri_fala_2.ogg-ac3aede7a44bb99fb25e210d9b49328d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

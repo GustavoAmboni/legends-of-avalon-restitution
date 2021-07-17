@@ -1,0 +1,49 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
+} ]
+_global_script_class_icons={
+"GitAPI": ""
+}
+
+[application]
+
+config/name="Legends of Avalon: Restitution"
+config/description="Legends of Avalon é uma série de jogos de RPG desenvolvida pelo estúdios BadDreams"
+run/main_scene="res://opening_ending/Opening.tscn"
+boot_splash/bg_color=Color( 0.0941176, 0.0901961, 0.0901961, 1 )
+config/icon="res://Leah.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/test_width=1579
+window/size/test_height=902
+window/handheld/orientation="sensor_landscape"
+window/stretch/mode="2d"
+
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

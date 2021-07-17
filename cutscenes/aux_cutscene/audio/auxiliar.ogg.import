@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/auxiliar.ogg-6ffaa92bd4a9c8325bba30544aea75ca.oggstr"
+
+[deps]
+
+source_file="res://cutscenes/aux_cutscene/audio/auxiliar.ogg"
+dest_files=[ "res://.import/auxiliar.ogg-6ffaa92bd4a9c8325bba30544aea75ca.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

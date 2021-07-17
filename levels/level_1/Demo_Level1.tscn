@@ -1,0 +1,293 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://levels/level_1/audio/wrong_way_1.ogg" type="AudioStream" id=1]
+[ext_resource path="res://levels/level_1/audio/heroi_dica_inicial.ogg" type="AudioStream" id=2]
+[ext_resource path="res://levels/level_1/audio/campfire_near.ogg" type="AudioStream" id=3]
+[ext_resource path="res://levels/level_1/audio/past_entrance.ogg" type="AudioStream" id=4]
+[ext_resource path="res://commom_audio/enviroment/campfire.ogg" type="AudioStream" id=5]
+[ext_resource path="res://levels/level_1/audio/campfire_near_2.ogg" type="AudioStream" id=6]
+[ext_resource path="res://commom_audio/enviroment/water-stream.ogg" type="AudioStream" id=7]
+[ext_resource path="res://commom_audio/enviroment/night-crickets.ogg" type="AudioStream" id=8]
+[ext_resource path="res://levels/level_1/audio/dead_end.ogg" type="AudioStream" id=9]
+[ext_resource path="res://commom_audio/collision/collision.ogg" type="AudioStream" id=10]
+[ext_resource path="res://commom_audio/enviroment/beating-of-wings.ogg" type="AudioStream" id=11]
+[ext_resource path="res://commom_audio/enviroment/footsteps.ogg" type="AudioStream" id=12]
+[ext_resource path="res://commom_audio/enviroment/hooding-crow.ogg" type="AudioStream" id=13]
+[ext_resource path="res://commom_audio/alerts/achievement.ogg" type="AudioStream" id=14]
+[ext_resource path="res://levels/level_1/scripts/Audio.gd" type="Script" id=15]
+[ext_resource path="res://levels/level_1/scripts/ExitArea.gd" type="Script" id=16]
+[ext_resource path="res://additional/NextLevelObject.tscn" type="PackedScene" id=17]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=18]
+[ext_resource path="res://additional/InteractiveArea.tscn" type="PackedScene" id=19]
+[ext_resource path="res://levels/level_1/scripts/Path.gd" type="Script" id=20]
+[ext_resource path="res://levels/level_1/scripts/Corvo.gd" type="Script" id=21]
+[ext_resource path="res://levels/level_1/scripts/CorvoPath.gd" type="Script" id=22]
+[ext_resource path="res://commom_audio/rotation/rotation.ogg" type="AudioStream" id=23]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 720, 40 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 512, 40 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 720, 40 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 512, 40 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 520, 152 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 96, 120 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 176.182
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 192.333
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 56, 40 )
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 64.0
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 16, 312 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 40, 504 )
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 113.137
+
+[sub_resource type="Curve2D" id=14]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -376, 376, 0, 0, 0, 0, 16, 96, 0, 0, 0, 0, 112, -80, 0, 0, 0, 0, 184, -440, 0, 0, 0, 0, 384, -1184, 0, 0, 0, 0, 512, -1704 )
+}
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 16.0
+
+[node name="DemoLevel1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 18 )]
+position = Vector2( -752, -280 )
+rotation = 1.5708
+speed = 60
+
+[node name="Night-sounds" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 8 )
+volume_db = -20.0
+autoplay = true
+attenuation = 3.24901
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2( 0, 1 )
+stream = ExtResource( 12 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Rotation" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2( 0, -1 )
+stream = ExtResource( 23 )
+volume_db = -18.0
+bus = "Effect_rotation"
+
+[node name="Collision" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 10 )
+volume_db = -8.0
+pitch_scale = 0.98
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2( -64, -360 )
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource( 1 )
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 680, 560 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2( -88, 1032 )
+shape = SubResource( 3 )
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+position = Vector2( -768, 472 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="SolidObjects" type="StaticBody2D" parent="."]
+
+[node name="InnerWall" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 48, -160 )
+shape = SubResource( 5 )
+
+[node name="InnerWall2" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( -376, 120 )
+shape = SubResource( 6 )
+
+[node name="InnerArcWall" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( -368, 632 )
+shape = SubResource( 7 )
+
+[node name="InnerCircle" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 80, 376 )
+shape = SubResource( 8 )
+
+[node name="Tents" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 512, 40 )
+shape = SubResource( 9 )
+
+[node name="Campfire" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 472, 552 )
+shape = SubResource( 10 )
+
+[node name="Campfire" type="AudioStreamPlayer2D" parent="SolidObjects/Campfire"]
+stream = ExtResource( 5 )
+volume_db = 10.0
+autoplay = true
+max_distance = 700.0
+attenuation = 0.554785
+
+[node name="FirstArea" type="Area2D" parent="."]
+position = Vector2( -632, 192 )
+input_pickable = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FirstArea"]
+polygon = PoolVector2Array( -152, -504, 152, -504, 160, 296, 128, 320, 96, 368, 80, 432, -152, 432 )
+
+[node name="SecondArea" type="Area2D" parent="."]
+modulate = Color( 0.615686, 1, 0, 1 )
+position = Vector2( -32, 312 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecondArea"]
+polygon = PoolVector2Array( -432, 168, -392, 144, -320, 136, -248, 160, -200, 200, -168, 248, -152, 312, -32, 312, -32, 200, -64, 160, -80, 112, -88, 64, -80, 16, -64, -32, -32, -72, -32, -72, -32, -312, -240, -312, -240, -64, -432, -64 )
+
+[node name="ThirdArea" type="Area2D" parent="."]
+modulate = Color( 0.054902, 0.227451, 0.819608, 1 )
+position = Vector2( -40, 312 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdArea"]
+shape = SubResource( 11 )
+
+[node name="WaterStream" type="Area2D" parent="."]
+position = Vector2( -944, 144 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Body" type="CollisionShape2D" parent="WaterStream"]
+shape = SubResource( 12 )
+
+[node name="WaterStream" type="AudioStreamPlayer2D" parent="WaterStream"]
+stream = ExtResource( 7 )
+volume_db = -6.0
+autoplay = true
+max_distance = 1200.0
+attenuation = 3.03143
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2( 472, 552 )
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Body" type="CollisionShape2D" parent="ExitArea"]
+modulate = Color( 0.92549, 0, 0, 1 )
+shape = SubResource( 13 )
+
+[node name="NextLevelObject" parent="ExitArea" instance=ExtResource( 17 )]
+next_scene = "res://cutscenes/second_cutscene/SecondCutscene.tscn"
+
+[node name="Path" type="Path2D" parent="."]
+curve = SubResource( 14 )
+script = ExtResource( 20 )
+duration = 3
+
+[node name="Tween" type="Tween" parent="Path"]
+
+[node name="CorvoPath" type="PathFollow2D" parent="Path"]
+position = Vector2( -376, 376 )
+rotation = -0.62025
+script = ExtResource( 22 )
+
+[node name="Corvo" type="Area2D" parent="Path/CorvoPath"]
+position = Vector2( 6.10352e-05, 0 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Body" type="CollisionShape2D" parent="Path/CorvoPath/Corvo"]
+modulate = Color( 0.635294, 0.0196078, 0.0196078, 1 )
+shape = SubResource( 15 )
+
+[node name="Hoot" type="AudioStreamPlayer2D" parent="Path/CorvoPath/Corvo"]
+stream = ExtResource( 13 )
+volume_db = 24.0
+attenuation = 7.0
+
+[node name="WingBeat" type="AudioStreamPlayer2D" parent="Path/CorvoPath/Corvo"]
+stream = ExtResource( 11 )
+volume_db = -8.0
+attenuation = 5.09824
+
+[node name="Audio" type="Node2D" parent="."]
+script = ExtResource( 15 )
+
+[node name="Inicio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 2 )
+volume_db = 5.0
+
+[node name="Achievement" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 14 )
+
+[node name="CampfireNear" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 3 )
+
+[node name="CampfireNearTimer" type="Timer" parent="Audio"]
+wait_time = 10.0
+one_shot = true
+
+[node name="InteractiveArea" parent="." instance=ExtResource( 19 )]
+position = Vector2( -512, -280 )
+audio = ExtResource( 1 )
+
+[node name="InteractiveArea2" parent="." instance=ExtResource( 19 )]
+position = Vector2( -744, 592 )
+audio = ExtResource( 4 )
+
+[node name="InteractiveArea4" parent="." instance=ExtResource( 19 )]
+position = Vector2( 472, 72 )
+audio = ExtResource( 6 )
+
+[node name="InteractiveArea3" parent="." instance=ExtResource( 19 )]
+position = Vector2( -264, 16 )
+audio = ExtResource( 9 )
+
+[connection signal="movement" from="Player" to="Audio" method="_on_Player_movement"]
+[connection signal="rotation_left" from="Player" to="Audio" method="_on_Player_rotation_left"]
+[connection signal="rotation_right" from="Player" to="Audio" method="_on_Player_rotation_right"]
+[connection signal="body_entered" from="FirstArea" to="Path" method="_on_FirstArea_body_entered"]
+[connection signal="body_entered" from="SecondArea" to="Path" method="_on_Second_Area_body_entered"]
+[connection signal="body_entered" from="ThirdArea" to="Audio" method="_on_ThirdArea_body_entered"]
+[connection signal="body_entered" from="ThirdArea" to="Path" method="_on_ThirdArea_body_entered"]
+[connection signal="body_entered" from="ExitArea" to="ExitArea" method="_on_ExitArea_body_entered"]
+[connection signal="tween_completed" from="Path/Tween" to="Path/CorvoPath/Corvo" method="_on_Tween_tween_completed"]
+[connection signal="tween_started" from="Path/Tween" to="Path/CorvoPath/Corvo" method="_on_Tween_tween_started"]
+[connection signal="timeout" from="Audio/CampfireNearTimer" to="Audio" method="_on_CampfireNearTimer_timeout"]

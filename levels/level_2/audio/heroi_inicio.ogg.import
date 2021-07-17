@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/heroi_inicio.ogg-25f2d43c15d47b939ca49cab2e27e808.oggstr"
+
+[deps]
+
+source_file="res://levels/level_2/audio/heroi_inicio.ogg"
+dest_files=[ "res://.import/heroi_inicio.ogg-25f2d43c15d47b939ca49cab2e27e808.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

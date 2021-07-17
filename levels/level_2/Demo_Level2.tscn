@@ -1,0 +1,179 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://levels/level_1/scripts/ExitArea.gd" type="Script" id=1]
+[ext_resource path="res://additional/NextLevelObject.tscn" type="PackedScene" id=2]
+[ext_resource path="res://commom_audio/enviroment/footsteps.ogg" type="AudioStream" id=3]
+[ext_resource path="res://commom_audio/enviroment/night-crickets.ogg" type="AudioStream" id=4]
+[ext_resource path="res://commom_audio/enviroment/campfire.ogg" type="AudioStream" id=5]
+[ext_resource path="res://commom_audio/collision/collision.ogg" type="AudioStream" id=6]
+[ext_resource path="res://commom_audio/enviroment/water-stream.ogg" type="AudioStream" id=7]
+[ext_resource path="res://levels/level_2/scripts/Audio.gd" type="Script" id=8]
+[ext_resource path="res://levels/level_2/audio/heroi_inicio.ogg" type="AudioStream" id=9]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://commom_audio/enviroment/hooding-crow.ogg" type="AudioStream" id=11]
+[ext_resource path="res://commom_audio/alerts/movement.ogg" type="AudioStream" id=12]
+[ext_resource path="res://additional/InteractiveArea.tscn" type="PackedScene" id=13]
+[ext_resource path="res://commom_audio/collision/tip4.ogg" type="AudioStream" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 720, 40 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 512, 40 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 720, 40 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 512, 40 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 520, 152 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 32, 80 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 176.182
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 192.333
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 56, 40 )
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 64.0
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 40, 504 )
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 113.137
+
+[node name="DemoLevel2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource( 10 )]
+position = Vector2( 384, 504 )
+speed = 60
+
+[node name="Night-sounds" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 4 )
+volume_db = -20.0
+autoplay = true
+attenuation = 3.24901
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 3 )
+volume_db = -80.0
+autoplay = true
+
+[node name="Collision" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 6 )
+volume_db = -8.0
+pitch_scale = 0.98
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2( -64, -360 )
+
+[node name="WallTop" type="CollisionShape2D" parent="Walls"]
+shape = SubResource( 1 )
+
+[node name="WallRight" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 680, 560 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="WallBottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2( -88, 1032 )
+shape = SubResource( 3 )
+
+[node name="WallLeft" type="CollisionShape2D" parent="Walls"]
+position = Vector2( 184, 560 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="SolidObjects" type="StaticBody2D" parent="."]
+
+[node name="InnerWall" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 48, -160 )
+shape = SubResource( 5 )
+
+[node name="InnerWall2" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 552, 520 )
+rotation = -1.57079
+shape = SubResource( 6 )
+
+[node name="InnerArcWall" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( -368, 632 )
+shape = SubResource( 7 )
+
+[node name="InnerCircle" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 80, 376 )
+shape = SubResource( 8 )
+
+[node name="Tents" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 512, 40 )
+shape = SubResource( 9 )
+
+[node name="Campfire" type="CollisionShape2D" parent="SolidObjects"]
+position = Vector2( 472, 552 )
+shape = SubResource( 10 )
+
+[node name="Campfire" type="AudioStreamPlayer2D" parent="SolidObjects/Campfire"]
+stream = ExtResource( 5 )
+volume_db = 5.0
+autoplay = true
+max_distance = 700.0
+attenuation = 0.659754
+
+[node name="InteractiveArea" parent="SolidObjects" instance=ExtResource( 13 )]
+position = Vector2( 136, 592 )
+audio = ExtResource( 14 )
+
+[node name="WaterStream" type="Area2D" parent="."]
+position = Vector2( -944, 144 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Body" type="CollisionShape2D" parent="WaterStream"]
+shape = SubResource( 11 )
+
+[node name="WaterStream" type="AudioStreamPlayer2D" parent="WaterStream"]
+stream = ExtResource( 7 )
+volume_db = -6.0
+autoplay = true
+max_distance = 1200.0
+attenuation = 4.59479
+
+[node name="ExitArea" type="Area2D" parent="."]
+position = Vector2( 512, 40 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Body" type="CollisionShape2D" parent="ExitArea"]
+modulate = Color( 0.92549, 0, 0, 1 )
+shape = SubResource( 12 )
+
+[node name="NextLevelObject" parent="ExitArea" instance=ExtResource( 2 )]
+next_scene = "res://opening_ending/Credits.tscn"
+
+[node name="Corvo" type="AudioStreamPlayer2D" parent="ExitArea"]
+stream = ExtResource( 11 )
+volume_db = 24.0
+autoplay = true
+attenuation = 7.72748
+
+[node name="Audio" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Movement" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 12 )
+
+[node name="Inicio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 9 )
+[connection signal="body_entered" from="ExitArea" to="ExitArea" method="_on_ExitArea_body_entered"]
+[connection signal="finished" from="Audio/Movement" to="Audio" method="_on_Movement_finished"]

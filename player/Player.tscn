@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://player/Player.gd" type="Script" id=1]
+[ext_resource path="res://player/Player.png" type="Texture" id=2]
+[ext_resource path="res://player/TouchButton.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 11.3427
+
+[sub_resource type="AtlasTexture" id=2]
+
+[sub_resource type="AtlasTexture" id=3]
+
+[node name="Player" type="KinematicBody2D"]
+rotation = -1.5708
+script = ExtResource( 1 )
+speed = 75
+rotation_speed = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.155, 0.155 )
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = 1.5708
+rotating = true
+current = true
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+visible = false
+margin_left = -643.0
+margin_top = -360.0
+margin_right = 643.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="MarginContainer" parent="."]
+margin_left = -357.0
+margin_top = -635.0
+margin_right = 357.0
+margin_bottom = 635.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container"]
+margin_right = 714.0
+margin_bottom = 1270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Left_Side2" type="Control" parent="Container/VBoxContainer"]
+margin_right = 714.0
+margin_bottom = 633.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Left_Button" parent="Container/VBoxContainer/Left_Side2" instance=ExtResource( 3 )]
+position = Vector2( 3.2639, -3.9686 )
+scale = Vector2( 708.799, 633.532 )
+normal = SubResource( 2 )
+passby_press = true
+action = "ui_left"
+
+[node name="Right_Side" type="Control" parent="Container/VBoxContainer"]
+margin_top = 637.0
+margin_right = 714.0
+margin_bottom = 1270.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Right_Buttonm" parent="Container/VBoxContainer/Right_Side" instance=ExtResource( 3 )]
+position = Vector2( -8.09537, -0.315925 )
+scale = Vector2( 725.945, 640.466 )
+normal = SubResource( 3 )
+passby_press = true
+action = "ui_right"
+
+[node name="CollisionRay" type="RayCast2D" parent="."]
+rotation = -0.785398
+enabled = true
+cast_to = Vector2( 0, 17 )
+
+[node name="CollisionRay2" type="RayCast2D" parent="."]
+rotation = -2.35619
+enabled = true
+cast_to = Vector2( 0, 17 )

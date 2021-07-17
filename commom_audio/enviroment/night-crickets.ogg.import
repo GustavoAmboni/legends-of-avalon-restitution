@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/night-crickets.ogg-f1564a08f11e729aebea5afd49448c68.oggstr"
+
+[deps]
+
+source_file="res://commom_audio/enviroment/night-crickets.ogg"
+dest_files=[ "res://.import/night-crickets.ogg-f1564a08f11e729aebea5afd49448c68.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

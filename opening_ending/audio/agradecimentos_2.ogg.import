@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/agradecimentos_2.ogg-bd272b855830b1b0216eeea025516ef8.oggstr"
+
+[deps]
+
+source_file="res://opening_ending/audio/agradecimentos_2.ogg"
+dest_files=[ "res://.import/agradecimentos_2.ogg-bd272b855830b1b0216eeea025516ef8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

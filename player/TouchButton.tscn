@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="AtlasTexture" id=1]
+
+[node name="TouchButton" type="TouchScreenButton"]
+normal = SubResource( 1 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/gregory_fala_2.ogg-424b08902f28f329fd281c55c8a325c1.oggstr"
+
+[deps]
+
+source_file="res://cutscenes/second_cutscene/audio/gregory_fala_2.ogg"
+dest_files=[ "res://.import/gregory_fala_2.ogg-424b08902f28f329fd281c55c8a325c1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

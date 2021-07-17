@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://opening_ending/Credits.gd" type="Script" id=1]
+[ext_resource path="res://opening_ending/audio/agradecimentos_2.ogg" type="AudioStream" id=2]
+[ext_resource path="res://opening_ending/audio/agradecimentos_1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://additional/NextLevelObject.tscn" type="PackedScene" id=4]
+[ext_resource path="res://cutscenes/CutsceneObject.tscn" type="PackedScene" id=5]
+[ext_resource path="res://opening_ending/audio/sair.ogg" type="AudioStream" id=6]
+[ext_resource path="res://commom_audio/music/guitar_main_theme.ogg" type="AudioStream" id=7]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CutsceneTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="SairTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="SairAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="CutsceneObject" parent="." instance=ExtResource( 5 )]
+volume = 5
+streams = [ ExtResource( 3 ), ExtResource( 2 ) ]
+
+[node name="NextLevelObject" parent="." instance=ExtResource( 4 )]
+next_scene = "res://additional/QuitGameObject.tscn"
+
+[node name="Guitar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -15.0
+autoplay = true
+[connection signal="timeout" from="CutsceneTimer" to="." method="_on_CutsceneTimer_timeout"]
+[connection signal="timeout" from="SairTimer" to="." method="_on_SairTimer_timeout"]
+[connection signal="cutscene_completed" from="CutsceneObject" to="." method="_on_CutsceneObject_cutscene_completed"]

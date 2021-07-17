@@ -1,0 +1,54 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://cutscenes/CutsceneObject.tscn" type="PackedScene" id=1]
+[ext_resource path="res://cutscenes/first_cutscene/audio/heroi_fala_1.ogg" type="AudioStream" id=2]
+[ext_resource path="res://cutscenes/first_cutscene/audio/gregory_fala_1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://cutscenes/first_cutscene/audio/gregory_fala_2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://cutscenes/first_cutscene/audio/heroi_fala_2.ogg" type="AudioStream" id=5]
+[ext_resource path="res://cutscenes/first_cutscene/audio/yuri_fala_1.ogg" type="AudioStream" id=6]
+[ext_resource path="res://cutscenes/first_cutscene/audio/heroi_fala_3.ogg" type="AudioStream" id=7]
+[ext_resource path="res://cutscenes/first_cutscene/audio/heroi_fala_4.ogg" type="AudioStream" id=8]
+[ext_resource path="res://cutscenes/first_cutscene/audio/leah_fala_1.ogg" type="AudioStream" id=9]
+[ext_resource path="res://cutscenes/first_cutscene/audio/heroi_fala_5.ogg" type="AudioStream" id=10]
+[ext_resource path="res://cutscenes/first_cutscene/audio/gregory_fala_3.ogg" type="AudioStream" id=11]
+[ext_resource path="res://cutscenes/first_cutscene/audio/heroi_fala_6.ogg" type="AudioStream" id=12]
+[ext_resource path="res://cutscenes/first_cutscene/audio/leah_fala_2.ogg" type="AudioStream" id=13]
+[ext_resource path="res://cutscenes/first_cutscene/audio/gregory_fala_4.ogg" type="AudioStream" id=14]
+[ext_resource path="res://cutscenes/scripts/FirstCutscene.gd" type="Script" id=15]
+[ext_resource path="res://commom_audio/music/guitar_main_theme.ogg" type="AudioStream" id=16]
+[ext_resource path="res://commom_audio/enviroment/night-crickets.ogg" type="AudioStream" id=17]
+[ext_resource path="res://commom_audio/enviroment/campfire.ogg" type="AudioStream" id=18]
+[ext_resource path="res://additional/NextLevelObject.tscn" type="PackedScene" id=19]
+[ext_resource path="res://cutscenes/first_cutscene/audio/yuri_fala_4.ogg" type="AudioStream" id=20]
+[ext_resource path="res://cutscenes/first_cutscene/audio/yuri_fala_2.ogg" type="AudioStream" id=21]
+[ext_resource path="res://cutscenes/first_cutscene/audio/yuri_fala_3.ogg" type="AudioStream" id=22]
+[ext_resource path="res://cutscenes/first_cutscene/audio/heroi_fala_7.ogg" type="AudioStream" id=23]
+[ext_resource path="res://cutscenes/first_cutscene/audio/yuri_fala_5.ogg" type="AudioStream" id=24]
+
+
+
+
+[node name="FirstCutscene" type="Node2D"]
+script = ExtResource( 15 )
+
+[node name="CutsceneObject" parent="." instance=ExtResource( 1 )]
+streams = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 21 ), ExtResource( 8 ), ExtResource( 22 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 20 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 23 ), ExtResource( 24 ) ]
+
+[node name="NextLevelObject" parent="." instance=ExtResource( 19 )]
+next_scene = "res://cutscenes/aux_cutscene/aux_cutscene.tscn"
+
+[node name="Guitar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -20.0
+
+[node name="Campfire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -15.0
+autoplay = true
+
+[node name="NightCrickets" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = -30.0
+autoplay = true
+[connection signal="cutscene_completed" from="CutsceneObject" to="." method="_on_CutsceneObject_cutscene_completed"]
+[connection signal="on_dialog_finished" from="CutsceneObject" to="." method="_on_CutsceneObject_on_dialog_finished"]
